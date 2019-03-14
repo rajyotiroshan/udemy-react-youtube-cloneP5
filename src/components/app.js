@@ -19,7 +19,7 @@ class App extends React.Component {
             }
         });
 
-        this.setState({videos: response.data.items});
+        this.setState({videos: response.data.items, selectedVideo: response.data.items[0]});
         
     }
     
@@ -29,11 +29,28 @@ class App extends React.Component {
     };
 
     render(){
+        let columnLength = '';
+        if(this.state.selectedVideo) {
+            columnLength = "two"
+        }
         return(
             <div className="ui container">
                 <SearchBar onFormSubmit={this.onTermSubmit}/>
-                {this.state.selectedVideo && <VideoDetail video={this.state.selectedVideo}/>}
-                <VideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect}/>
+
+                <div className="ui grid">
+                    <div className="ui row">
+                       {
+                        this.state.selectedVideo  && 
+                        <div className="nine wide column">
+                             <VideoDetail video={this.state.selectedVideo}/>
+                        </div>
+                       }
+                        <div className={`${columnLength} column wide `}>
+                             <VideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect}/>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
             
         );
