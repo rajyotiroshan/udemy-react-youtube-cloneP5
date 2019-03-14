@@ -3,11 +3,11 @@ import VideoItem from './VideoItem';
 
 const VideoList = ({videos})=>{
     const renderedVideoList = videos.map((video)=>{
-        return <VideoItem />;
+        return <VideoItem video={video}/>;
     });
 
     return (
-        <div>
+        <div className="ui relaxed divided list">
             {renderedVideoList}
         </div>
     );
