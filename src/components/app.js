@@ -6,9 +6,11 @@ import VideoList from './VideoList';
 class App extends React.Component {
     
     state= {
-        videos: []
+        videos: [],
+        selectedVideo: null
     }
 
+    //callback for SearchBar submit
     onTermSubmit = async (srchTerm)=>{
         const response = await youtube.get('/search',{
             params: {
@@ -19,12 +21,17 @@ class App extends React.Component {
         this.setState({videos: response.data.items});
         
     }
+    
+    //callback for indivisual video click.
+    onVideoSelect = (video)=> {
+        console.log("From the app", video);
+    };
 
     render(){
         return(
             <div className="ui container">
                 <SearchBar onFormSubmit={this.onTermSubmit}/>
-                <VideoList videos={this.state.videos}/>
+                <VideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect}/>
             </div>
             
         );
