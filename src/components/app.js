@@ -11,6 +11,10 @@ class App extends React.Component {
         selectedVideo: null
     }
 
+    componentDidMount(){//default video for buildings.
+        this.onTermSubmit('buildings');
+    }
+
     //callback for SearchBar submit
     onTermSubmit = async (srchTerm)=>{
         const response = await youtube.get('/search',{
@@ -29,10 +33,6 @@ class App extends React.Component {
     };
 
     render(){
-        let columnLength = '';
-        if(this.state.selectedVideo) {
-            columnLength = "two"
-        }
         return(
             <div className="ui container">
                 <SearchBar onFormSubmit={this.onTermSubmit}/>
@@ -45,7 +45,7 @@ class App extends React.Component {
                              <VideoDetail video={this.state.selectedVideo}/>
                         </div>
                        }
-                        <div className={`${columnLength} column wide `}>
+                        <div className="seven wide column">
                              <VideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect}/>
                         </div>
                     </div>
