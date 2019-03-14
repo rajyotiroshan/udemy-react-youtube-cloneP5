@@ -1,10 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-##Description
+## Description
 
 This is simple clone of youtube(https://www.youtube.com/) website.
 
-##Functionality included
+### Functionality included
 
 Search for term.
 maximum five video will be displayed.
@@ -22,9 +22,9 @@ Clone the project in you local system.
 move your cmd inside the downloaded dir.
 And run npm start.
 
-##Dependencies
+## Dependencies
 
-###semantic-ui
+### semantic-ui
 
 This project uses semantic-ui library for styling.
 
